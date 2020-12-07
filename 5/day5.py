@@ -31,11 +31,9 @@ def solve2(data):
 	seats = [False for i in range(8*128)]
 	for d in data:
 		seats[seatId(rowCol(d))] = True
-	for i in range(len(seats)):
-		if seats[i] == False:
-			print(i)
-
-#messy!
+	for i in range(1,len(seats)-1):
+		if seats[i] == False and seats[i-1] == True and seats[i+1] == True:
+			return i
 
 print(solve1(parse('input.txt')))
-solve2(parse('input.txt'))
+print(solve2(parse('input.txt')))
